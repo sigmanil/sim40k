@@ -11,7 +11,7 @@ object Simulation extends App {
   val landRaider =    Armor(8, 2, 7, 7)
   
   val attempts = 1000000
-  val starcannonFalconVsLandRaider = (0 until attempts).map { _ =>
+  lazy val starcannonFalconVsLandRaider = (0 until attempts).map { _ =>
     val attack1 = new Attack(pulseLaser, landRaider)
     val attack2 = new Attack(pulseLaser, landRaider)
     val attack3 = new Attack(starCannon, landRaider)
@@ -40,7 +40,7 @@ object Simulation extends App {
     attack1.damage + attack2.damage + attack3.damage + attack4.damage
   }.sum.toDouble / attempts.toDouble
 
-  val amlFalconVsLandraider = (0 until attempts).map { _ =>
+  lazy val amlFalconVsLandraider = (0 until attempts).map { _ =>
     val attack1 = new Attack(pulseLaser, landRaider)
     val attack2 = new Attack(pulseLaser, landRaider)
     val attack3 = new Attack(aml, landRaider)
@@ -64,7 +64,7 @@ object Simulation extends App {
     attack1.damage + attack2.damage + attack3.damage
   }.sum.toDouble / attempts.toDouble
   
-  val focussedFirePrismVsLandraider = (0 until attempts).map { _ =>
+  lazy val focussedFirePrismVsLandraider = (0 until attempts).map { _ =>
     val twoDeeThree = (new Die(3)).roll + (new Die(3)).roll 
         
     (0 until twoDeeThree).map { _ =>
@@ -79,7 +79,7 @@ object Simulation extends App {
     }.sum
   }.sum.toDouble / attempts.toDouble
   
-  val nightSpinnerVsLandRaider = (0 until attempts).map { _ =>
+  lazy val nightSpinnerVsLandRaider = (0 until attempts).map { _ =>
     val d6 = (new Die(6)).roll + (new Die(6)).roll 
         
     (0 until d6).map { _ =>
